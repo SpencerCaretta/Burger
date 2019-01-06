@@ -1,21 +1,19 @@
 <h1>Welcome to the Burger Joint</h1>
 
-<h2>Check out all the burgers on our menus, even suggest some of your own.</h2>
+<h2 id="all">Check out all the burgers on our menus!</h2>
 
 <ul>
     {{#each burger}}
         {{#unless devoured}}
-            {{> burgers/burger-block devoured=true}}
         {{/unless}}
     {{/each}}
 </ul>
 
-<h2>Sorry, these burgers have been eaten already!</h2>
+<h2 id="eaten">Sorry, these burgers have been eaten already!</h2>
 
 <ul>
-    {{#each burgers}}
+    {{#each burger}}
         {{#if devoured}}
-            {{> burgers/burger-block devoured=false}}
         {{/if}}
     {{/each}}
 </ul>
