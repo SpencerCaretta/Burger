@@ -1,24 +1,39 @@
 <h1>Welcome to the Burger Joint</h1>
+<div class = "container">
+    <div class="row">
+        <div class="col-md-6">
+            <h2 id="all">Check out all the burgers on our menus!</h2>
 
-<h2 id="all">Check out all the burgers on our menus!</h2>
+            <ul>
+                {{#each burger}}
+                    {{#unless devoured}}
+                    {{/unless}}
+                {{/each}}
+            </ul>
+        </div>
 
-<ul>
-    {{#each burger}}
-        {{#unless devoured}}
-        {{/unless}}
-    {{/each}}
-</ul>
+        <div class = "col-md-6">
+            <h2 id="eaten">Sorry, these burgers have been eaten already!</h2>
 
-<h2 id="eaten">Sorry, these burgers have been eaten already!</h2>
+            <ul>
+                {{#each burger}}
+                    {{#if devoured}}
+                    {{/if}}
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+</div>
 
-<ul>
-    {{#each burger}}
-        {{#if devoured}}
-        {{/if}}
-    {{/each}}
-</ul>
+<div class = "container">
+    <div class = "row">
+        <div class = "col-md-12">\
+            <h2>Suggest a Burger for our Menu!</h2>
+        </div>
+    </div>
+</div>
 
-<h2>Suggest a Burger for our Menu!</h2>
+
 
 <form class="create-form">
     <div class="form-group">

@@ -1,7 +1,11 @@
-#all {
-    float: left
+h1 {
+    text-align: center
 }
 
-#eaten {
-    float: right
+h2 {
+    text-align: center
+}
+
+.create-form {
+    text-align: center
 }
