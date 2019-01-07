@@ -1,13 +1,6 @@
-h1 {
-    text-align: center
-}
-
-h2 {
-    text-align: center
-}
-
-.create-form {
-    text-align: center
+h1, h2, .create-form, ul {
+    text-align: center;
+    font-family: 'Indie Flower', cursive;
 }
 
 .img {
@@ -18,6 +11,7 @@ h2 {
     height: 100px;
 }
 
-ul {
-    text-align: center
+body {
+    background-color: teal;
 }
+
