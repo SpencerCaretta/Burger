@@ -1,33 +1,42 @@
 <h1>Welcome to the Burger Joint</h1>
+<br>
+
 <div class = "container">
     <div class="row">
         <div class="col-md-6">
             <h2 id="all">Check out all the burgers on our menus!</h2>
 
-            <ul>
-                {{#each burger}}
-                    {{#unless devoured}}
+            <ol>
+                {{#each burgers}}
+                    {{#unless this.devoured}}
+                        <li>
+                            {{this.burger_name}}
+                        </li>
                     {{/unless}}
                 {{/each}}
-            </ul>
+            </ol>
         </div>
 
         <div class = "col-md-6">
             <h2 id="eaten">Sorry, these burgers have been eaten already!</h2>
 
-            <ul>
-                {{#each burger}}
-                    {{#if devoured}}
+            <ol>
+                {{#each burgers}}
+                    {{#if this.devoured}}
+                        <li>
+                            {{this.burger_name}}
+                        </li>
                     {{/if}}
                 {{/each}}
-            </ul>
+            </ol>
         </div>
     </div>
 </div>
+<br>
 
 <div class = "container">
     <div class = "row">
-        <div class = "col-md-12">\
+        <div class = "col-md-12">
             <h2>Suggest a Burger for our Menu!</h2>
         </div>
     </div>
@@ -40,11 +49,24 @@
         <label for="bn">Burger Name:</label>
         <input type="text" id="bn" name="name">
     </div>
-    <div class="form-group">
-        <label for="dev">Devoured?</label>
-        <input type="radio" name="devoured" value="1" checked> Devoured!<br>
-        <input type="radio" name="devoured" value="0">Not Yet Eaten
-    </div>
-
     <button type="submit">Add Burger</button>
 </form>
+
+<!--Script to submit the new burger to the database and then to the page-->
+<script>
+    $(".create-form").on("submit"), function(event) {
+        event.preventDefault();
+
+        var newBurger = {
+            burger_name: $("#bn").val().trim()
+        };
+
+        $.ajax("/api/burgers", {
+            type: "POST",
+            data: newBurger
+        }).then(function() {
+            console.log("Your burger has been added!");
+            location.reload();
+        });
+    };
+</script>
