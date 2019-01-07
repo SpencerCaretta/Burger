@@ -9,3 +9,8 @@ h2 {
 .create-form {
     text-align: center
 }
+
+.img {
+    margin: auto;
+    width: 50%;
+}

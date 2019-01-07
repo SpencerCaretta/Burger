@@ -1,4 +1,9 @@
 <h1>Welcome to the Burger Joint</h1>
+
+<br>
+
+<img src="../public/assets/img/burger.png" alt="Yum-Yum-Burger" class="img">
+
 <br>
 
 <div class = "container">
@@ -11,7 +16,7 @@
                     {{#unless this.devoured}}
                         <li>
                             {{this.burger_name}}
-                            {{> burgers/burger-block devoured=true}}
+                            {{> burgers/burger-block}}
                         </li>
                     {{/unless}}
                 {{/each}}
@@ -53,15 +58,18 @@
     <button type="submit">Add Burger</button>
 </form>
 
-<!--Script to submit the new burger to the database and then to the page-->
+
 <script>
-    $(".create-form").on("submit"), function(event) {
+    //Script to submit the new burger to the database and then to the page
+    $(".create-form").on("submit", function(event) {
         event.preventDefault();
 
         var newBurger = {
             burger_name: $("#bn").val().trim()
         };
 
+
+        //Post request to the server
         $.ajax("/api/burgers", {
             type: "POST",
             data: newBurger
@@ -69,5 +77,27 @@
             console.log("Your burger has been added!");
             location.reload();
         });
-    };
+    });
+
+    //Devour It Logic
+    $(".devour-it").on("click", function(event) {
+
+        //Put request to change devoured to true based on which devoured button was clicked
+        //Grab ID:
+        var id = $(this).data("id");
+        //Grab Devoured variable and set equal to true
+        var devoured = {
+            devoured: 1
+        };
+
+        //Finally Put request
+        $.ajax("/api/burgers/" + id, {
+            type: "PUT",
+            data: devoured
+        }).then(function() {
+            location.reload();
+        });
+
+
+    });
 </script>
