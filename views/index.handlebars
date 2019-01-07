@@ -11,6 +11,7 @@
                     {{#unless this.devoured}}
                         <li>
                             {{this.burger_name}}
+                            {{> burgers/burger-block devoured=true}}
                         </li>
                     {{/unless}}
                 {{/each}}
