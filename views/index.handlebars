@@ -2,39 +2,37 @@
 
 <br>
 
-<img src="../public/assets/img/burger.png" alt="Yum-Yum-Burger" class="img">
+<img src="./assets/img/burger.png" alt="Yum-Yum-Burger" class="img">
 
 <br>
 
 <div class = "container">
     <div class="row">
         <div class="col-md-6">
-            <h2 id="all">Check out all the burgers on our menus!</h2>
+            <h2 id="all">Our Burger Menu</h2>
 
-            <ol>
+            <ul>
                 {{#each burgers}}
                     {{#unless this.devoured}}
-                        <li>
                             {{this.burger_name}}
                             {{> burgers/burger-block}}
-                        </li>
+                            <br>
                     {{/unless}}
                 {{/each}}
-            </ol>
+            </ul>
         </div>
 
         <div class = "col-md-6">
-            <h2 id="eaten">Sorry, these burgers have been eaten already!</h2>
+            <h2 id="eaten">Burgers Already Eaten</h2>
 
-            <ol>
+            <ul>
                 {{#each burgers}}
                     {{#if this.devoured}}
-                        <li>
                             {{this.burger_name}}
-                        </li>
+                            <br>
                     {{/if}}
                 {{/each}}
-            </ol>
+            </ul>
         </div>
     </div>
 </div>
